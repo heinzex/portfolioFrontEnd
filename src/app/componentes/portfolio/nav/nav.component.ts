@@ -96,7 +96,6 @@ export class NavComponent implements OnInit {
   }
 
   preSocialEdit() {
-    console.log(this.user);
     this.form.get('instagram')?.setValue(this.social.instagram);
     this.form.get('twitter')?.setValue(this.social.twitter);
     this.form.get('facebook')?.setValue(this.social.facebook);
