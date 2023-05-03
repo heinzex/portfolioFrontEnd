@@ -1,0 +1,21 @@
+h2{
+    color: #2C3D73;
+}
+ul{
+    list-style-type: none;
+}
+img{
+    height: 80px;
+    width: 80px;
+}
+li.title, li.sub-title, li.date{
+    margin-left: -15px;
+    color: #5A58A6;
+}
+.title{
+    font-weight: bold;
+    font-size: 15pt;
+}
+button[disabled] {
+  opacity: 0.5;
+}

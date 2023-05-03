@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+.btn-seccion {
+  width: 22px;
+  height: 22px;
+  font-size: 20px;
+  margin-left: 4px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+.btn-seccion:hover {
+  font-size: 22px;
+}
+.close {
+  border-width: 0;
+  background-color: transparent;
+}
+.btn-edit{
+  margin-left: 10px;
+  margin-right: 10px;
+  align-self: center;
+}
+.modal-header{
+  background-color: #595da7;
+}
+.modal-body{
+  background-color: #8F93D9;
+}
+.modal-body p {
+  color: #dab7a2;
+}
+.modal-header h5, .modal-body label{
+  color: #ffd2b6;
+}
+.modal-body input, .modal-body select{
+  background-color: #54579b;
+  color: #F2D5C4;
+}
+.modal-body input:focus, .modal-body select:focus, .btn-edit:focus{
+  background-color: #54579b;
+  color: #F2D5C4;
+  border-color: #F2D5C4;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #f2d5c454;
+}
+select option:hover{
+  background-color: #464988;
+  color:black;
+}
+.btn-edit{
+  background-color: #7d81c9;
+  border:solid #F2D5C4 2px;
+  border-radius: 10px;
+  color: #F2D5C4;
+}
+.btn-edit:hover{
+  background-color: #F2D5C4;
+  border:solid #7d81c9 2px;
+  border-radius: 10px;
+  color: #7d81c9;
+}

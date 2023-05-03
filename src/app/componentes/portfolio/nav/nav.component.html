@@ -1,0 +1,336 @@
+<div class="modal fade" id="editarPerfil">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Editar perfil</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onEdit()">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  formControlName="nombre"
+                />
+              </div>
+              <div class="col-6 form-group">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="telefono"
+                  formControlName="telefono"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="fotoPerfil" class="mt-3 form-label"
+                  >Foto de perfil (URL)</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fotoPerfil"
+                  formControlName="fotoPerfil"
+                />
+              </div>
+              <div class="col-6 form-group">
+                <label for="fotoFondo" class="mt-3 form-label"
+                  >Foto de fondo (URL)</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fotoFondo"
+                  formControlName="fotoFondo"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="informacionExtra" class="mt-3 form-label"
+                  >Informacion extra</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="informacionExtra"
+                  formControlName="informacionExtra"
+                />
+              </div>
+              <div class="col-6 form-group">
+                <label for="acercaDe" class="mt-3 form-label">Acerca de</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="acercaDe"
+                  formControlName="acercaDe"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="pais" class="mt-3 form-label">Pais</label>
+                <select
+                  #pais
+                  class="form-control"
+                  id="pais"
+                  formControlName="pais"
+                  (change)="onPaisSelect(pais.value)"
+                >
+                  <option
+                    *ngFor="let pais of paises"
+                    [value]="pais.country_name"
+                  >
+                    {{ pais.country_name }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-6 form-group">
+                <label for="provincia" class="mt-3 form-label">Provincia</label>
+                <select
+                  class="form-control"
+                  id="provincia"
+                  formControlName="provincia"
+                >
+                  <option
+                    *ngFor="let prov of provincias"
+                    [value]="prov.state_name"
+                  >
+                    {{ prov.state_name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="fechaNacimiento" class="mt-3 form-label"
+                  >Fecha de nacimiento</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="fechaNacimiento"
+                  formControlName="fechaNacimiento"
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn-edit btn btn-primary mt-4 float-end"
+            >
+              Guardar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="1" id="infoContacto">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Informacion de contacto</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p >Email: {{ user.email }}</p>
+        <p >Telefono: {{ perfil.telefono }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editarSocial">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Editar links de redes sociales</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onSocialEdit()">
+          <div class="form-group">
+            <label for="instagram" class="mt-1 form-label">Instagram</label>
+            <input
+              type="text"
+              class="form-control"
+              id="instagram"
+              formControlName="instagram"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="twitter" class="mt-1 form-label">Twitter</label>
+            <input
+              type="text"
+              class="form-control"
+              id="twitter"
+              formControlName="twitter"
+            />
+          </div>
+          <div class="form-group">
+            <label for="facebook" class="mt-1 form-label">Facebook</label>
+            <input
+              type="text"
+              class="form-control"
+              id="facebook"
+              formControlName="facebook"
+            />
+          </div>
+
+          <div class=" form-group">
+            <label for="youtube" class="mt-1 form-label">Youtube</label>
+            <input
+              type="text"
+              class="form-control"
+              id="youtube"
+              formControlName="youtube"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary mt-4 float-end"
+            [disabled]="
+              (!this.form.valid && this.form.dirty) ||
+              (!this.form.valid && !this.form.dirty) ||
+              !this.form.dirty
+            "
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" tabindex="1" id="masInfo">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Informacion de contacto</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p >Pais: {{ perfil.pais }}</p>
+        <p >Provincia: {{ perfil.provincia }}</p>
+        <p >Fecha de nacimiento: {{ perfil.fechaNacimiento }}</p>
+        <p >Edad: {{ perfil.edad }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="user">
+  <ng-container *ngIf="perfil">
+    <nav>
+      <div class="d-flex align-items-start flex-column p-4">
+        <i class="bi bi-box-arrow-left logout" (click)="onLogout()"></i>
+        <img
+          [src]="perfil.fotoPerfil"
+          alt="user"
+          class="rounded-circle shadow"
+        />
+        <p class="name">
+          {{ perfil.nombre }}
+          <i
+            class="btn-seccion float-end bi bi-pencil-square"
+            (click)="preEdit()"
+            data-bs-toggle="modal"
+            data-bs-target="#editarPerfil"
+          ></i>
+        </p>
+        <p>{{ perfil.informacionExtra }}</p>
+        <button class="mas-info" data-bs-toggle="modal" href="#masInfo">
+          Más informacion ➩
+        </button>
+        <button
+          class="nav-button"
+          href="#perfil"
+          (click)="onScroll($event, 'perfil', thisLabel2)"
+        >
+          <label #thisLabel2 class="line"></label>Perfil
+        </button>
+        <button
+          class="nav-button"
+          href="#expEdu"
+          (click)="onScroll($event, 'expEdu', thisLabel3)"
+        >
+          <label #thisLabel3 class="line"></label>Experiencia y educacion
+        </button>
+        <button
+          class="nav-button"
+          href="#skill"
+          (click)="onScroll($event, 'skill', thisLabel4)"
+        >
+          <label #thisLabel4 class="line"></label>Hard skills & Soft skills
+        </button>
+        <button
+          class="nav-button"
+          href="#proyecto"
+          (click)="onScroll($event, 'proyecto', thisLabel)"
+        >
+          <label class="line" #thisLabel></label>Proyectos
+        </button>
+      </div>
+      <div class="d-flex justify-content-center cont-logout">
+        <button class="info-contacto" data-bs-toggle="modal" href="#infoContacto">
+          Informacion de contacto ➩
+        </button>
+        <div class="social-media">
+         <i
+            class="btn-seccion float-end bi bi-pencil-square social-edit"
+            (click)="preSocialEdit()"
+            data-bs-toggle="modal"
+            data-bs-target="#editarSocial"
+          ></i>
+          <a
+            class="social float-end bi bi-youtube"
+            [href]="social.youtube"
+          ></a>
+          <a class="social float-end bi bi-instagram" [href]="social.instagram"></a>
+          <a class="social float-end bi bi-twitter" [href]="social.twitter"></a>
+          <a class="social float-end bi bi-facebook" [href]="social.facebook"></a>
+
+        </div>
+      </div>
+    </nav>
+  </ng-container>
+</ng-container>

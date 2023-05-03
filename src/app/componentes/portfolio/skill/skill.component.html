@@ -1,0 +1,163 @@
+<div class="modal fade" id="agregarSkill">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Agregar Skill</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onAdd()">
+          <div class="form-group">
+            <label for="sector1" class="mt-1 form-label">Sector</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sector1"
+              formControlName="sector"
+            />
+            <label for="porcentaje1" class="mt-1 form-label">Porcentaje</label>
+            <input
+              type="number"
+              class="form-control"
+              id="porcentaje1"
+              formControlName="porcentaje"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-edit mt-4 float-end"
+            [disabled]="!this.form.valid"
+          >
+            Añadir
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editarSkill">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Editar informacion</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onEdit()">
+          <div class="form-group">
+            <label for="sector" class="mt-1 form-label">Sector</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sector"
+              formControlName="sector"
+            />
+            <label for="porcentaje" class="mt-1 form-label">Porcentaje</label>
+            <input
+              type="number"
+              class="form-control"
+              id="porcentaje"
+              formControlName="porcentaje"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-edit mt-4 float-end"
+            [disabled]="
+              (!this.form.valid && this.form.dirty) ||
+              (!this.form.valid && !this.form.dirty) ||
+              !this.form.dirty
+            "
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="eliminarSkill">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Esta seguro que quiere eliminar?</h5>
+      </div>
+      <div class="modal-body">
+        <button
+          type="submit"
+          class="btn btn-danger float-end"
+          data-bs-dismiss="modal"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success float-start"
+          (click)="onDelete()"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2 class="mt-3">
+  Hard Skills & Soft Skills<i
+    class="btn-seccion float-end bi bi-plus-circle"
+    data-bs-toggle="modal"
+    data-bs-target="#agregarSkill"
+    (click)="preAdd()"
+  ></i>
+</h2>
+<ul>
+  <li class="container-fluid mt-3" *ngFor="let skill of skills">
+    <div class="row">
+      <div class="col-12">
+        <p class="title">
+          {{ skill.sector
+          }}<i
+            class="btn-seccion float-end bi bi-trash3"
+            data-bs-toggle="modal"
+            data-bs-target="#eliminarSkill"
+            (click)="preDel(skill)"
+          ></i>
+          <i
+            class="btn-seccion float-end bi bi-pencil-square"
+            (click)="preEdit(skill)"
+            data-bs-toggle="modal"
+            data-bs-target="#editarSkill"
+          ></i>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped"
+            role="progressbar"
+            [style.width.%]="skill.porcentaje"
+            aria-valuemax="100"
+          ></div>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

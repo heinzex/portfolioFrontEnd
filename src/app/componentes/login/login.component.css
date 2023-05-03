@@ -1,0 +1,54 @@
+.form-cont {
+  height: 56vh;
+  background-image: linear-gradient(to bottom, #3f3e6e, #09143a);
+}
+form {
+  height: auto;
+  width: 450px;
+  border: 2px solid #c9c9c9;
+  border-radius: 20px;
+  align-self: center;
+  background-color: rgb(255, 255, 255);
+  opacity: 70%;
+}
+.top-bar {
+  background-image: linear-gradient(to bottom, #3f3e6e, #3f3e6e);
+
+  height: 22vh;
+}
+.top-bar > div{
+  height: 50%;
+  background-image: linear-gradient(to bottom, #8F93D9, #3f3e6e);
+
+}
+.bottom-bar {
+  background-color: #09143a;
+  height: 22vh;
+}
+.titulo{
+    font-weight: bold;
+    font-size: 15pt;
+}
+button{
+    background-color: #8F93D9;
+    border:solid #F2D5C4 2px;
+    border-radius: 10px;
+    color: #F2D5C4;
+    align-self: center;
+    height: 50px;
+}
+button:hover {
+    background-color: #F2D5C4;
+    color: #8F93D9;
+    border:solid #8F93D9 2px;
+}
+.registro{
+    cursor: pointer;
+    margin-top: 23px;
+    font-size: 11pt;
+}
+.error{
+  color: rgb(238, 55, 55);
+  height: 12px;
+  font-size: 12pt;
+}

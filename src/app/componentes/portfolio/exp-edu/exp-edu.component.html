@@ -1,0 +1,276 @@
+<div class="modal fade" id="agregarExpEdu">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Agregar informacion</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onAdd()">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 form-group">
+                <label for="nombre1" class="mt-1 form-label">Título</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre1"
+                  formControlName="nombre"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <label for="informacion1" class="mt-1 form-label"
+                  >Descripción</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="informacion1"
+                  formControlName="informacion"
+                />
+              </div>
+              <div class="col-6">
+                <label for="icono1" class="mt-1 form-label">Icono(URL)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="icono1"
+                  formControlName="icono"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="desde1" class="mt-1 form-label">Desde</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="desde1"
+                  formControlName="desde"
+                />
+              </div>
+              <div class="col-6 form-group">
+                <label for="hasta1" class="mt-1 form-label">Hasta</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="hasta1"
+                  formControlName="hasta"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-edit mt-4 float-end"
+            [disabled]="!this.form.valid"
+          >
+            Añadir
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editarExpEdu">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Editar informacion</h5>
+        <button
+          type="button"
+          class="close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onEdit()">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 form-group">
+                <label for="nombre" class="mt-1 form-label">Título</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  formControlName="nombre"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="informacion" class="mt-1 form-label"
+                  >Descripción</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="informacion"
+                  formControlName="informacion"
+                />
+              </div>
+              <div class="col-6 form-group">
+                <label for="icono" class="mt-1 form-label">Icono(URL)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="icono"
+                  formControlName="icono"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="desde" class="mt-1 form-label">Desde</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="desde"
+                  formControlName="desde"
+                />
+              </div>
+              <div class="col-6 form-group">
+                <label for="hasta" class="mt-1 form-label">Hasta</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="hasta"
+                  formControlName="hasta"
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="btn-edit btn mt-4 float-end"
+            [disabled]="
+              (!this.form.valid && this.form.dirty) ||
+              (!this.form.valid && !this.form.dirty) ||
+              !this.form.dirty
+            "
+          >
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="eliminarExpEdu">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Label">Esta seguro que quiere eliminar?</h5>
+      </div>
+      <div class="modal-body">
+        <button
+          type="submit"
+          class="btn btn-danger float-end"
+          data-bs-dismiss="modal"
+        >
+          Cancelar
+        </button>
+        <button
+          type="submit"
+          class="btn btn-success float-start"
+          (click)="onDelete()"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <h2 class="mt-3">
+    Educación<i
+      class="btn-seccion float-end bi bi-plus-circle"
+      data-bs-toggle="modal"
+      data-bs-target="#agregarExpEdu"
+      (click)="preAdd(false)"
+    ></i>
+  </h2>
+  <ul *ngFor="let ed of edu">
+    <li class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-auto">
+          <img [src]="ed.icono" alt="1" />
+        </div>
+        <div class="col">
+          <ul>
+            <li class="title">
+              {{ ed.nombre
+              }}<i
+                class="btn-seccion float-end bi bi-trash3"
+                data-bs-toggle="modal"
+                data-bs-target="#eliminarExpEdu"
+                (click)="preDel(ed)"
+              ></i>
+              <i
+                class="btn-seccion float-end bi bi-pencil-square"
+                (click)="preEdit(ed)"
+                data-bs-toggle="modal"
+                data-bs-target="#editarExpEdu"
+              ></i>
+            </li>
+            <li class="sub-title">{{ ed.informacion }}</li>
+            <li class="date">{{ ed.tiempo }}</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <h2>
+    Experiencia<i
+      class="btn-seccion float-end bi bi-plus-circle"
+      data-bs-toggle="modal"
+      data-bs-target="#agregarExpEdu"
+      (click)="preAdd(true)"
+    ></i>
+  </h2>
+  <ul *ngFor="let ex of exp">
+    <li class="container-fluid mt-3">
+      <div class="row">
+        <div class="col-auto">
+          <img [src]="ex.icono" alt="1" />
+        </div>
+        <div class="col">
+          <ul>
+            <li class="title">
+              {{ ex.nombre
+              }}<i
+                class="btn-seccion float-end bi bi-trash3"
+                data-bs-toggle="modal"
+                data-bs-target="#eliminarExpEdu"
+                (click)="preDel(ex)"
+              ></i>
+              <i
+                class="btn-seccion float-end bi bi-pencil-square"
+                (click)="preEdit(ex)"
+                data-bs-toggle="modal"
+                data-bs-target="#editarExpEdu"
+              ></i>
+            </li>
+            <li class="sub-title">{{ ex.informacion }}</li>
+            <li class="date">{{ ex.tiempo }}</li>
+          </ul>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,26 @@
+h2{
+  color: #2C3D73;
+}
+ul{
+  list-style-type: none;
+}
+img{
+  height: 80px;
+  width: 80px;
+}
+p.title{
+  color: #4440b9;
+  font-weight: bold;
+  font-size: 15pt;
+  cursor: pointer;
+}
+p.desc{
+  color: #5A58A6;
+  font-size: 11pt;
+  margin-top: -7px;
+}
+a{
+  font-weight: bold;
+  font-size: 14pt;
+  color: #474592;
+}

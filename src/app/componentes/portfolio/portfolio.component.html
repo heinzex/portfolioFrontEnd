@@ -1,0 +1,27 @@
+<div
+  *ngIf="!user"
+  class="load d-flex align-items-center justify-content-center text-info"
+>
+  <div class="spinner-border" role="status"></div>
+</div>
+<div *ngIf="user">
+  <div class="grid">
+    <div class="nav">
+      <app-nav></app-nav>
+    </div>
+    <div class="body overflow-auto">
+      <div class="sep">
+        <app-perfil id="perfil"></app-perfil>
+      </div>
+      <div class="sep">
+        <app-exp-edu id="expEdu"></app-exp-edu>
+      </div>
+      <div class="sep">
+        <app-skill id="skill"></app-skill>
+      </div>
+      <div class="sep">
+        <app-proyecto id="proyecto"></app-proyecto>
+      </div>
+    </div>
+  </div>
+</div>
