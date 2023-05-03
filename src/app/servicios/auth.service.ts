@@ -9,7 +9,7 @@ import { User } from '../models/user';
   providedIn: 'root',
 })
 export class AuthService {
-  url: string = 'http://portfolio-sody.onrender.com/api';
+  url: string = 'https://portfolio-sody.onrender.com/api';
   private userSubject = new BehaviorSubject<User | null>(null);
   user = this.userSubject.asObservable();
 

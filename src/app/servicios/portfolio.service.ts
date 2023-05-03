@@ -14,7 +14,7 @@ import { Social } from '../models/social';
   providedIn: 'root',
 })
 export class PortfolioService {
-  private url: string = 'http://portfolio-sody.onrender.com//api';
+  private url: string = 'https://portfolio-sody.onrender.com/api';
 
   constructor(
     private http: HttpClient,
