@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, filter, map } from 'rxjs';
 import { ExpEdu } from 'src/app/models/exp-edu';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
@@ -15,10 +16,12 @@ export class ExpEduComponent implements OnInit {
   form: FormGroup;
   expeduActual!: ExpEdu;
   esExp!: boolean;
+  isLogin:boolean = this.auth.isLogin;
 
   constructor(
     private formBuilder: FormBuilder,
-    private portfolioService: PortfolioService
+    private portfolioService: PortfolioService,
+    private auth: AuthService
   ) {
     this.form = this.formBuilder.group({
       nombre: ['', [Validators.required]],

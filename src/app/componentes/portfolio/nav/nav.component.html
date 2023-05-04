@@ -128,10 +128,7 @@
                 />
               </div>
             </div>
-            <button
-              type="submit"
-              class="btn-edit btn mt-4 float-end"
-            >
+            <button type="submit" class="btn-edit btn mt-4 float-end">
               Guardar
             </button>
           </div>
@@ -156,8 +153,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p >Email: {{ user.email }}</p>
-        <p >Telefono: {{ perfil.telefono }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Telefono: {{ perfil.telefono }}</p>
       </div>
     </div>
   </div>
@@ -208,7 +205,7 @@
             />
           </div>
 
-          <div class=" form-group">
+          <div class="form-group">
             <label for="youtube" class="mt-1 form-label">Youtube</label>
             <input
               type="text"
@@ -249,10 +246,10 @@
         </button>
       </div>
       <div class="modal-body">
-        <p >Pais: {{ perfil.pais }}</p>
-        <p >Provincia: {{ perfil.provincia }}</p>
-        <p >Fecha de nacimiento: {{ perfil.fechaNacimiento }}</p>
-        <p >Edad: {{ perfil.edad }}</p>
+        <p>Pais: {{ perfil.pais }}</p>
+        <p>Provincia: {{ perfil.provincia }}</p>
+        <p>Fecha de nacimiento: {{ perfil.fechaNacimiento }}</p>
+        <p>Edad: {{ perfil.edad }}</p>
       </div>
     </div>
   </div>
@@ -262,7 +259,16 @@
   <ng-container *ngIf="perfil">
     <nav>
       <div class="d-flex align-items-start flex-column p-4">
-        <i class="bi bi-box-arrow-left logout" (click)="onLogout()"></i>
+        <i
+          *ngIf="this.isLogin"
+          class="bi bi-box-arrow-left logout"
+          (click)="onLogout()"
+        ></i>
+        <i
+          *ngIf="!this.isLogin"
+          class="bi bi-box-arrow-in-right logout"
+          (click)="onLogin()"
+        ></i>
         <img
           [src]="perfil.fotoPerfil"
           alt="user"
@@ -271,6 +277,7 @@
         <p class="name">
           {{ perfil.nombre }}
           <i
+            *ngIf="this.isLogin"
             class="btn-seccion float-end bi bi-pencil-square"
             (click)="preEdit()"
             data-bs-toggle="modal"
@@ -311,24 +318,31 @@
         </button>
       </div>
       <div class="d-flex justify-content-center cont-logout">
-        <button class="info-contacto" data-bs-toggle="modal" href="#infoContacto">
+        <button
+          class="info-contacto"
+          data-bs-toggle="modal"
+          href="#infoContacto"
+        >
           Informacion de contacto ➩
         </button>
         <div class="social-media">
-         <i
+          <i
+            *ngIf="this.isLogin"
             class="btn-seccion float-end bi bi-pencil-square social-edit"
             (click)="preSocialEdit()"
             data-bs-toggle="modal"
             data-bs-target="#editarSocial"
           ></i>
+          <a class="social float-end bi bi-youtube" [href]="social.youtube"></a>
           <a
-            class="social float-end bi bi-youtube"
-            [href]="social.youtube"
+            class="social float-end bi bi-instagram"
+            [href]="social.instagram"
           ></a>
-          <a class="social float-end bi bi-instagram" [href]="social.instagram"></a>
           <a class="social float-end bi bi-twitter" [href]="social.twitter"></a>
-          <a class="social float-end bi bi-facebook" [href]="social.facebook"></a>
-
+          <a
+            class="social float-end bi bi-facebook"
+            [href]="social.facebook"
+          ></a>
         </div>
       </div>
     </nav>

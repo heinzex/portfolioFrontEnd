@@ -6,6 +6,7 @@ import { filter } from 'rxjs';
 import { Perfil } from 'src/app/models/perfil';
 import { Social } from 'src/app/models/social';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
@@ -20,12 +21,14 @@ export class NavComponent implements OnInit {
   form: FormGroup;
   paises: any[] = [];
   provincias: any[] = [];
+  isLogin:boolean = this.auth.isLogin;
 
   constructor(
     private formBuilder: FormBuilder,
     private portfolioService: PortfolioService,
     private router: Router,
     private http: HttpClient,
+    private auth: AuthService
   ) {
     this.form = this.formBuilder.group({
       nombre: [''],
@@ -119,7 +122,7 @@ export class NavComponent implements OnInit {
 
   onLogout() {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    location.reload();
   }
 
   onScroll(event: MouseEvent, sectionId: string, labelRef: HTMLElement) {
@@ -145,5 +148,9 @@ export class NavComponent implements OnInit {
     var fechasraw = fecharaw.split('-');
     var fecha = fechasraw[2] + '/' + fechasraw[1] + '/' + fechasraw[0];
     return fecha;
+  }
+
+  onLogin(){
+    this.router.navigate(['/login']);
   }
 }

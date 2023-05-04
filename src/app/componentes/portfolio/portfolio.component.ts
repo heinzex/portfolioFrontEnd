@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { filter } from 'rxjs';
 import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 })
 export class PortfolioComponent implements OnInit {
   user!: User;
-  constructor(private portfolioService: PortfolioService) {}
+  constructor(private portfolioService: PortfolioService, private auth: AuthService) {}
 
   ngOnInit(): void {
     this.portfolioService.user
@@ -18,5 +19,6 @@ export class PortfolioComponent implements OnInit {
       .subscribe((user) => {
         this.user = user!;
       });
+
   }
 }

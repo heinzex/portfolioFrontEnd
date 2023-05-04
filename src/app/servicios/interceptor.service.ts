@@ -42,10 +42,17 @@ export class InterceptorService implements HttpInterceptor {
     }
     var currentUser = this.isLogin;
     var token = localStorage.getItem('token');
+    var freeToken = localStorage.getItem('freeToken');
     if (currentUser) {
       req = req.clone({
         setHeaders: {
           Authorization: '' + token,
+        },
+      });
+    } else {
+      req = req.clone({
+        setHeaders: {
+          Authorization: '' + freeToken,
         },
       });
     }

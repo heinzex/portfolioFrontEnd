@@ -7,8 +7,8 @@ import { PortfolioGuard } from './portfolio.guard';
 const routes: Routes = [
   {path: '', pathMatch:'full',redirectTo: '/login'},
   {path: 'login', component: LoginComponent},
-  {path: 'portfolio', component: PortfolioComponent, canActivate:[PortfolioGuard]},
-  {path: '**', component: LoginComponent}
+  {path: 'portfolio', component: PortfolioComponent},
+  {path: '**', component: PortfolioComponent}
 ];
 
 @NgModule({

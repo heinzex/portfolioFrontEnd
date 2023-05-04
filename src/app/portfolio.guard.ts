@@ -12,10 +12,10 @@ import { AuthService } from './servicios/auth.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PortfolioGuard implements CanActivate {
+export class PortfolioGuard  {
   constructor(private auth: AuthService, private router: Router) {}
 
-  canActivate(
+  /*canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ):
@@ -29,5 +29,5 @@ export class PortfolioGuard implements CanActivate {
       this.router.navigate(['/login']);
       return false;
     }
-  }
+  }*/
 }

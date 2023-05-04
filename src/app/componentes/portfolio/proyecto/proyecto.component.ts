@@ -4,6 +4,7 @@ import { PortfolioService } from 'src/app/servicios/portfolio.service';
 import { Proyecto } from 'src/app/models/proyecto';
 import { Observable, filter, map } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
   selector: 'app-proyecto',
@@ -14,10 +15,12 @@ export class ProyectoComponent {
   proyectos!: Proyecto[];
   form: FormGroup;
   proyectoActual!: Proyecto;
+  isLogin:boolean = this.auth.isLogin;
 
   constructor(
     private formBuilder: FormBuilder,
-    private portfolioService: PortfolioService
+    private portfolioService: PortfolioService,
+    private auth: AuthService
   ) {
     portfolioService.user
       .pipe(filter((user) => user !== null))

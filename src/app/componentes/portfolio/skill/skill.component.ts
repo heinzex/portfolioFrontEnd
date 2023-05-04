@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable, filter, map } from 'rxjs';
 import { Skill } from 'src/app/models/skill';
+import { AuthService } from 'src/app/servicios/auth.service';
 import { PortfolioService } from 'src/app/servicios/portfolio.service';
 
 @Component({
@@ -13,11 +14,12 @@ export class SkillComponent implements OnInit {
   skills!: Skill[];
   skillActual!: Skill;
   form: FormGroup;
-
+  isLogin:boolean = this.auth.isLogin;
 
   constructor(
     private formBuilder: FormBuilder,
-    private portfolioService: PortfolioService
+    private portfolioService: PortfolioService,
+    private auth: AuthService
   ) {
     this.form = this.formBuilder.group({
       sector: ['', [Validators.required]],

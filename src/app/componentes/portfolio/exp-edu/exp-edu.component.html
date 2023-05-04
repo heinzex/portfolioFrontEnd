@@ -198,7 +198,7 @@
 
 <div>
   <h2 class="mt-3">
-    Educación<i
+    Educación<i *ngIf="this.isLogin"
       class="btn-seccion float-end bi bi-plus-circle"
       data-bs-toggle="modal"
       data-bs-target="#agregarExpEdu"
@@ -215,13 +215,13 @@
           <ul>
             <li class="title">
               {{ ed.nombre
-              }}<i
+              }}<i *ngIf="this.isLogin"
                 class="btn-seccion float-end bi bi-trash3"
                 data-bs-toggle="modal"
                 data-bs-target="#eliminarExpEdu"
                 (click)="preDel(ed)"
               ></i>
-              <i
+              <i *ngIf="this.isLogin"
                 class="btn-seccion float-end bi bi-pencil-square"
                 (click)="preEdit(ed)"
                 data-bs-toggle="modal"
@@ -236,7 +236,7 @@
     </li>
   </ul>
   <h2>
-    Experiencia<i
+    Experiencia<i *ngIf="this.isLogin"
       class="btn-seccion float-end bi bi-plus-circle"
       data-bs-toggle="modal"
       data-bs-target="#agregarExpEdu"
@@ -253,13 +253,13 @@
           <ul>
             <li class="title">
               {{ ex.nombre
-              }}<i
+              }}<i *ngIf="this.isLogin"
                 class="btn-seccion float-end bi bi-trash3"
                 data-bs-toggle="modal"
                 data-bs-target="#eliminarExpEdu"
                 (click)="preDel(ex)"
               ></i>
-              <i
+              <i *ngIf="this.isLogin"
                 class="btn-seccion float-end bi bi-pencil-square"
                 (click)="preEdit(ex)"
                 data-bs-toggle="modal"
